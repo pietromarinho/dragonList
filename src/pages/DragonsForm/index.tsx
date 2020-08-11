@@ -1,10 +1,10 @@
+import moment from 'moment';
+import 'moment/locale/pt-br';
 import React, { FormEvent, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Input from '../../comonents/Input';
 import api from '../../services/api';
 import './style.css';
-import moment from 'moment';
-import 'moment/locale/pt-br';
 
 
 function DragonsForm() {
@@ -26,7 +26,7 @@ function DragonsForm() {
                 type
             }).then(() => {
                 alert('Dragão cadastrado com sucesso');
-                history.push('/');
+                returnScreen();
             }).catch(() => {
                 alert('Erro ao realizar cadastro');
             })
@@ -36,7 +36,7 @@ function DragonsForm() {
                 type
             }).then(() => {
                 alert('Dragão alterado com sucesso');
-                history.push('/');
+                returnScreen();
             }).catch(() => {
                 alert('Erro ao realizar alteração');
             })
@@ -44,7 +44,7 @@ function DragonsForm() {
     }
 
     function returnScreen(): void {
-        history.push('/')
+        history.push('/dragon-list');
     }
 
     function getDragon(id: number): void {
@@ -89,6 +89,7 @@ function DragonsForm() {
                             inputName="name"
                             inputLabel="Nome"
                             readOnly={showDetails}
+                            required
                             value={name}
                             onChange={(e) => {
                                 setName(e.target.value)
@@ -98,6 +99,7 @@ function DragonsForm() {
                             inputName="type"
                             inputLabel="Tipo"
                             readOnly={showDetails}
+                            required
                             value={type}
                             onChange={(e) => {
                                 setType(e.target.value)
@@ -113,7 +115,6 @@ function DragonsForm() {
                                     setType(e.target.value)
                                 }}
                             ></Input>
-                            // <Moment date={creationDate}></Moment>
                         }
                     </fieldset>
 

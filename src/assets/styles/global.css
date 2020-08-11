@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 :root {
     --color-background: #233451;
     --color-primary-lighter: #9871F5;
@@ -28,6 +29,7 @@
 
 html, body, #root {
     height: 100vh;
+    font-family: Lato, sans-serif;
 }
 
 body {
@@ -44,15 +46,24 @@ body {
     width: 90vw;
 }
 
+.container .page-header {
+    height: 85px;
+}
 
+.container main {
+    height: calc(100vh - 85px);
+}
 
 @media (min-width: 700px) {
     :root {
         font-size: 62.5%;
     }
-
+    .container .page-header {
+        height: 115px !important;
+    }
     .container main {
         width: 70vw !important;
         margin: 0 auto;
+        height: calc(100vh - 115px) !important;
     }
 }

@@ -20,7 +20,7 @@ function DragonsList() {
     const history = useHistory();
 
     function deleteDragon(id: Number) {
-        isAuthenticated() &&
+        isAuthenticated &&
             api.delete(`${id}`).then(
                 () => {
                     alert('Dragão deletado');
@@ -65,38 +65,43 @@ function DragonsList() {
             </header>
 
             <main>
-                <ul>
-                    <li className="li-header">
-                        <h5> Nome </h5>
+                {dragons.length > 0 ? (
+                    <ul>
+                        <li className="li-header">
+                            <h5> Nome </h5>
 
-                        <h5> Tipo </h5>
+                            <h5> Tipo </h5>
 
-                        <h5> Ações </h5>
-                    </li>
-                    {dragons.map((dragon: DragonsData) => (
-                        <li key={dragon.id}>
-                            <h2>
-                                {dragon.name}
-                            </h2>
-                            <h2>
-                                {dragon.type}
-                            </h2>
-                            <div className="acoes">
-                                <button type="button" title="Editar" onClick={() => goToForm(dragon.id)}>
-                                    <img src={pencilOutline} alt="Editar" />
-                                </button>
-
-                                <button type="button" title="Detalhes" onClick={() => goToForm(dragon.id, true)}>
-                                    <img src={eye} alt="Editar" />
-                                </button>
-
-                                <button type="button" title="Excluir" onClick={() => deleteDragon(dragon.id)}>
-                                    <img src={trash} alt="Excluir" />
-                                </button>
-                            </div>
+                            <h5> Ações </h5>
                         </li>
-                    ))}
-                </ul>
+                        {dragons.map((dragon: DragonsData) => (
+                            <li key={dragon.id}>
+                                <h2>
+                                    {dragon.name}
+                                </h2>
+                                <h2>
+                                    {dragon.type}
+                                </h2>
+                                <div className="acoes">
+                                    <button type="button" title="Editar" onClick={() => goToForm(dragon.id)}>
+                                        <img src={pencilOutline} alt="Editar" />
+                                    </button>
+
+                                    <button type="button" title="Detalhes" onClick={() => goToForm(dragon.id, true)}>
+                                        <img src={eye} alt="Editar" />
+                                    </button>
+
+                                    <button type="button" title="Excluir" onClick={() => deleteDragon(dragon.id)}>
+                                        <img src={trash} alt="Excluir" />
+                                    </button>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                        <h1 className="empty-list"> Não há registros</h1>
+                    )
+                }
             </main>
         </div>
     );
