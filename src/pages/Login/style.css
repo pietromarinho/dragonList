@@ -11,6 +11,7 @@
     padding: 2.4rem;
     overflow: hidden;
     margin: auto 2.5rem;
+    height: auto !important;
 }
 
 #login-form main footer {

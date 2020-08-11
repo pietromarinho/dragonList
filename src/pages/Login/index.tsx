@@ -28,26 +28,25 @@ function Login() {
         <div id="login-form" className="container">
             <main>
                 <form onSubmit={doLogin}>
-                    <div className="login-content">
 
-                        <Input
-                            inputName="userName"
-                            inputLabel="Usuário"
-                            value={userName}
-                            onChange={(e) => {
-                                setUserName(e.target.value)
-                            }}
-                        ></Input>
-                        <Input
-                            inputName="password"
-                            inputLabel="Senha"
-                            type="password"
-                            value={password}
-                            onChange={(e) => {
-                                setPassword(e.target.value)
-                            }}
-                        ></Input>
-                    </div>
+                    <Input
+                        inputName="userName"
+                        inputLabel="Usuário"
+                        value={userName}
+                        onChange={(e) => {
+                            setUserName(e.target.value)
+                        }}
+                    ></Input>
+                    <Input
+                        inputName="password"
+                        inputLabel="Senha"
+                        type="password"
+                        value={password}
+                        onChange={(e) => {
+                            setPassword(e.target.value)
+                        }}
+                    ></Input>
+
                     <footer>
                         <button type="submit">
                             Login
