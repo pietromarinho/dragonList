@@ -21,8 +21,8 @@ function Routes() {
     return (
         <BrowserRouter>
             <Switch>
-                {/* <Route path="/" exact component={DragonsList}></Route> */}
-                <PrivateRoute exact path='/' component={DragonsList}></PrivateRoute>
+                <Route path="/" exact component={DragonsList}></Route>
+                {/* <PrivateRoute exact path='/' component={DragonsList}></PrivateRoute> */}
                 <PrivateRoute path="/dragon-form/:id?" component={DragonsForm}></PrivateRoute>
             </Switch>
         </BrowserRouter>

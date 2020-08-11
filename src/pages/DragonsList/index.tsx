@@ -6,6 +6,7 @@ import trash from '../../assets/images/icons/trash.svg';
 import eye from '../../assets/images/icons/eye.svg';
 import api from '../../services/api';
 import './style.css';
+import { isAuthenticated } from '../../auth';
 
 interface DragonsData {
     id: number;
@@ -19,13 +20,14 @@ function DragonsList() {
     const history = useHistory();
 
     function deleteDragon(id: Number) {
-        api.delete(`${id}`).then(
-            success => {
-                alert('Dragão deletado');
-                getDragons();
-            }).catch(() => {
-                alert('Algo deu errado');
-            })
+        isAuthenticated() &&
+            api.delete(`${id}`).then(
+                () => {
+                    alert('Dragão deletado');
+                    getDragons();
+                }).catch(() => {
+                    alert('Algo deu errado');
+                })
     }
 
     function getDragons() {
